@@ -1,5 +1,5 @@
 # meCookies
-By Amadeusz Blanik
+By [Amadeusz Blanik](https://blanik.me)
 
 ### How to use
 ----
