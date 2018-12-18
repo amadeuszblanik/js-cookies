@@ -4,17 +4,25 @@ class MeCookies {
     };
 
     set(name, value, time, path = "/"){
-        let date = new Date();
+        let date = new Date()
         let now  = Number.parseInt(new Date().getTime())
-      	if( time.indexOf("h") == 1 ){
-        	date = Number.parseInt(time) * 3600000 + now
-        }else if( time.indexOf("d") == 1 ){
-        	date = Number.parseInt(time) * 86400000 + now
-        }else if( time.indexOf("m") == 1 ){
-          	date = now + Number.parseInt(time) * 86400000 * 30
-        }else if( time.indexOf("y") == 1 ){
-          	date = now + Number.parseInt(time) * 86400000 * 365
+
+        if( typeof time === "string" && time.indexOf(" ") > -1){
+            time = time.split(" ")
         }
+
+        for( let index in time ){
+            if( time[index].indexOf("h") == 1 ){
+                date = Number.parseInt(time[index]) * 3600000 + now
+            }else if( time[index].indexOf("d") == 1 ){
+                date = Number.parseInt(time[index]) * 86400000 + now
+            }else if( time[index].indexOf("m") == 1 ){
+                date = now + Number.parseInt(time[index]) * 86400000 * 30
+            }else if( time[index].indexOf("y") == 1 ){
+                date = now + Number.parseInt(time[index]) * 86400000 * 365
+            }
+        }
+        new Date(date)
         date = new Date(date)
         if( this.devmode == true ){
             console.log("🍪 meCookies\n🍪 Cookie name: " + name + "\n🍪 Value: " + value + "\n🍪 Date:" + date + "\n🍪 Path:" + path)

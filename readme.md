@@ -1,6 +1,8 @@
 # meCookies
 By [Amadeusz Blanik](https://blanik.me)
 
+The only one pure JavaScript Cookies which use same time format as Jira!
+
 ### How to use
 ----
 Download one of following package:
@@ -29,7 +31,7 @@ let meCookie = new MeCookies(true)
 meCookie.set(
     name, 
     value, 
-    time, ~ eg. "7d"
+    time, ~ eg. "1y 2m 7d 8h"
     path ~ default path = "/"
    )
 ~~~~
