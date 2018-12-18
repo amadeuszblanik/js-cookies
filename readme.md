@@ -2,18 +2,37 @@
 By Amadeusz Blanik
 
 ### How to use
-Init
-**let meCookie = new MeCookies(true);** -- dev
-**let meCookie = new MeCookies();** -- prod
+----
+Download one of following package:
+> [Build (with Babel)](https://raw.githubusercontent.com/amadeuszblanik/js-cookies/master/build/mecookies.js) 
+> [ES6 (IE11 not supported)](https://raw.githubusercontent.com/amadeuszblanik/js-cookies/master/src/index.js)
 
-Set
-**meCookie.set(name, value, time, path)** - default path = "/";
+Then…
+> <script src="mecookies.js"></script>
+> <script>
+> let meCookie = new MeCookies();
+> meCookie.set("hello", "world", "7d")
+> </script>
 
-Get
-**meCookie.get(name)**
+#### Devmode
+> let meCookie = new MeCookies(true);
+
+### Options
+----
+
+#### Set
+> meCookie.set(name, 
+>    value, 
+>    time, 
+>    path *// default path = "/"*
+>    )
+>
 
 Time
-* y - years
-* m - months
-* d - days
-* h - hours
+> y - years
+> m - months
+> d - days
+> h - hours
+
+#### Get
+> meCookie.get(name)

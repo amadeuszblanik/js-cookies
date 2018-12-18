@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "7",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^4.27.1"
+  },
+  "name": "@blanik/js-cookies",
+  "description": "Pure Javascript Cookies By Amadeusz Blanik",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "webpack-cli": "^3.1.2"
+  },
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development --watch --info-verbosity verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amadeuszblanik/js-cookies.git"
+  },
+  "keywords": [
+    "cookies",
+    "js",
+    "javascript",
+    "pure-js",
+    "es6",
+    "babel",
+    "webpack"
+  ],
+  "author": "Amadeusz Blanik <amadeusz@blanik.me> (http://blanik.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amadeuszblanik/js-cookies/issues"
+  },
+  "homepage": "https://github.com/amadeuszblanik/js-cookies#readme"
+}
