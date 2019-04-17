@@ -1,22 +1,25 @@
-# meCookies
-By [Amadeusz Blanik](https://blanik.me)
+# meCookies ES6
+**MIT** LICENSED
+By [Amadeusz Blanik (Blanik.me)](https://blanik.me)
 
-The only one pure JavaScript Cookies which use same time format as Jira!
+The only one JS-Cookie that use JIRA time format!
 
-### How to use
+## Download
 ----
 Download one of following package:
-* [Build (with Babel)](https://raw.githubusercontent.com/amadeuszblanik/js-cookies/master/build/mecookies.js) 
-* [ES6 (IE11 not supported)](https://raw.githubusercontent.com/amadeuszblanik/js-cookies/master/src/index.js)
+* [Build (Transpiled)](https://raw.githubusercontent.com/amadeuszblanik/js-cookies/master/dist/mecookies.js) 
+* [Source ES6](https://raw.githubusercontent.com/amadeuszblanik/js-cookies/master/src/index.js)
 
-Then…
-~~~~
-<script src="mecookies.js"></script> 
-<script> 
-let meCookie = new MeCookies()
-meCookie.set("hello", "world", "7d")
-</script>
-~~~~
+## Browser-Supports
+----
+| Browser        | Build          | Source        |
+| -------------: |:---------------| --------------|
+| Safaro         | Supported      | Supported     |
+| Chrome         | Supported      | Supported     |
+| Firefox        | Supported      | Supported     |
+| MSEdge         | ??             | ??            |
+| IE-11          | ??             | Not supported |
+
 
 #### Devmode
 ~~~~
@@ -31,17 +34,21 @@ let meCookie = new MeCookies(true)
 meCookie.set(
     name, 
     value, 
-    time, ~ eg. "1y 2m 7d 8h"
+    time, ~ eg. "1Y 2M 7D 8h" or new Date("27 june 2019")
     path ~ default path = "/"
    )
 ~~~~
 
-##### Time
+##### Cheatsheet (time format)
 ~~~~
-y - years
-m - months
-d - days
+Y*- years
+M*- months
+D*- days
 h - hours
+m - minutes
+s - seconds
+
+* - uppercase
 ~~~~
 
 #### Get

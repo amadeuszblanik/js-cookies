@@ -1,54 +1,71 @@
 class MeCookies {
-    constructor(devmode = false){
-        this.devmode = devmode;
-    };
+	constructor(devmode = false) {
+		this.devmode = devmode;
+	}
 
-    set(name, value, time, path = "/"){
-        let date = new Date()
-        let now  = Number.parseInt(new Date().getTime())
+	set(name, value, time, path = "/") {
+		let date = new Date();
 
-        if( typeof time === "string" && time.indexOf(" ") > -1){
-            time = time.split(" ")
-        }
+		if (!(time instanceof Date)) {
+			time = time.split(" ");
+			for (let currTime of time) {
+				if (currTime.includes("Y")) {
+					date.setFullYear(date.getFullYear() + parseInt(currTime));
+				} else if (currTime.includes("M")) {
+					date.setMonth(date.getMonth() + parseInt(currTime));
+				} else if (currTime.includes("D")) {
+					date.setHours(date.getHours() + parseInt(currTime * 24));
+				} else if (currTime.includes("h")) {
+					date.setHours(date.getHours() + parseInt(currTime));
+				} else if (currTime.includes("m")) {
+					date.setMinutes(date.getMinutes() + parseInt(currTime));
+				} else if (currTime.includes("s")) {
+					date.setSeconds(date.getSeconds() + parseInt(currTime));
+				}
+			}
+		} else {
+			date = time;
+		}
 
-        for( let index in time ){
-            if( time[index].indexOf("h") == 1 ){
-                date = Number.parseInt(time[index]) * 3600000 + now
-            }else if( time[index].indexOf("d") == 1 ){
-                date = Number.parseInt(time[index]) * 86400000 + now
-            }else if( time[index].indexOf("m") == 1 ){
-                date = now + Number.parseInt(time[index]) * 86400000 * 30
-            }else if( time[index].indexOf("y") == 1 ){
-                date = now + Number.parseInt(time[index]) * 86400000 * 365
-            }
-        }
-        new Date(date)
-        date = new Date(date)
-        if( this.devmode == true ){
-            console.log("🍪 meCookies\n🍪 Cookie name: " + name + "\n🍪 Value: " + value + "\n🍪 Date:" + date + "\n🍪 Path:" + path)
-        }
-    	document.cookie = name + "=" + value + ";expires=" + date + ";path=" + path 
-    }
+		if (this.devmode == true) {
+			console.log(
+				"🍪 meCookies\n🍪 Cookie name: " +
+					name +
+					"\n🍪 Value: " +
+					value +
+					"\n🍪 Date:" +
+					date +
+					"\n🍪 Path:" +
+					path
+			);
+		}
+		document.cookie = name + "=" + value + ";expires=" + date + ";path=" + path;
+	}
 
-    get(name){
-        name = name + "="
-        let decodedCookie = decodeURIComponent(document.cookie)
-        let decodedCookieArray = decodedCookie.split(';')
-        for( let index in decodedCookieArray ){
-            let tempThis = decodedCookieArray[index]
-            while( tempThis.charAt(0) == ' ' ){
-                tempThis = tempThis.substring(1)
-            }
-            if( tempThis.indexOf(name) > -1 ){
-                if( this.devmode == true ){
-                    console.log("🍪 meCookies\n🍪 Cookie name: " + name + "\n🍪 Value: " + tempThis.substring(name.length, tempThis.length))
-                }
-                return tempThis.substring(name.length, tempThis.length)
-            }
-        }
-        if( this.devmode == true ){
-            console.log("🍪 meCookies\n🍪 Cookie name: " + name + "\n🍪 Not found")
-        }
-        return null
-    }
+	get(name) {
+		name = name + "=";
+		let decodedCookie = decodeURIComponent(document.cookie);
+		let decodedCookieArray = decodedCookie.split(";");
+		for (let index in decodedCookieArray) {
+			let tempThis = decodedCookieArray[index];
+			while (tempThis.charAt(0) == " ") {
+				tempThis = tempThis.substring(1);
+			}
+			if (tempThis.indexOf(name) > -1) {
+				if (this.devmode == true) {
+					console.log(
+						"🍪 meCookies\n🍪 Cookie name: " +
+							name +
+							"\n🍪 Value: " +
+							tempThis.substring(name.length, tempThis.length)
+					);
+				}
+				return tempThis.substring(name.length, tempThis.length);
+			}
+		}
+		if (this.devmode == true) {
+			console.log("🍪 meCookies\n🍪 Cookie name: " + name + "\n🍪 Not found");
+		}
+		return null;
+	}
 }

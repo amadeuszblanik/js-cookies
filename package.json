@@ -29,7 +29,7 @@
     "babel",
     "gulp"
   ],
-  "author": "Amadeusz Blanik <amadeusz@blanik.me> (http://blanik.me)",
+  "author": "Amadeusz Blanik <amadeusz@blanik.me> (https://blanik.me)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/amadeuszblanik/js-cookies/issues"
